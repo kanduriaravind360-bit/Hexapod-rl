@@ -1,0 +1,38 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    # gz_ros2_control turns a position command into a joint velocity command via
+    # vel = gain * (target - current). The default (0.1) tracks far too slowly to
+    # hold the robot up against gravity.
+    position_proportional_gain: 15.0
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    hexapod_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+hexapod_position_controller:
+  ros__parameters:
+    # Order must match the <ros2_control> block in urdf/hexapod.urdf and the
+    # command vector published by scripts/stand.py.
+    joints:
+      - leg_1_coxa_joint
+      - leg_1_femur_joint
+      - leg_1_tibia_joint
+      - leg_2_coxa_joint
+      - leg_2_femur_joint
+      - leg_2_tibia_joint
+      - leg_3_coxa_joint
+      - leg_3_femur_joint
+      - leg_3_tibia_joint
+      - leg_4_coxa_joint
+      - leg_4_femur_joint
+      - leg_4_tibia_joint
+      - leg_5_coxa_joint
+      - leg_5_femur_joint
+      - leg_5_tibia_joint
+      - leg_6_coxa_joint
+      - leg_6_femur_joint
+      - leg_6_tibia_joint
